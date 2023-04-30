@@ -20,7 +20,7 @@ WORKDIR /home/node/app
 
 COPY --chown=node:node ./*.json ./*.yml ./yarn.lock ./
 COPY --chown=node:node ./.yarn ./.yarn
-RUN yarn install --immutable
+RUN yarn workspaces focus --production
 
 COPY --chown=node:node --from=builder /home/node/app/dist ./dist
 
